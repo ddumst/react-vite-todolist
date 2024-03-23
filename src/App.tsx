@@ -5,6 +5,7 @@ import TaskForm from './components/TaskForm';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const addTask = (title: string, description: string) => {
     setTasks([...tasks, { id: Date.now(), title, description, status: false }]);
@@ -18,11 +19,18 @@ function App() {
     setTasks(tasks.map(task => task.id === id ? { ...task, status: !task.status } : task));
   };
 
+  const updateTask = (id: number, title: string, description: string) => {
+    setTasks(tasks.map(task => task.id === id ? { ...task, title, description } : task));
+    setEditingTask(null);
+  };
+
   return (
     <div className="App">
-      <TaskForm addTask={addTask} />
+      <TaskForm addTask={addTask} editingTask={editingTask} updateTask={updateTask} />
       <div className="flex flex-col space-y-4 mt-4">
-        {tasks.map(task => <TaskItem key={task.id} task={task} deleteTask={deleteTask} toggleTask={toggleTask} />)}
+        {tasks.map(task => 
+          <TaskItem key={task.id} task={task} deleteTask={deleteTask} toggleTask={toggleTask} setEditingTask={setEditingTask} />
+        )}
       </div>
     </div>
   );
