@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import TaskItem, { Task } from './components/TaskItem';
 import TaskForm from './components/TaskForm';
+import LoginForm from './components/LoginForm';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   const addTask = (title: string, description: string) => {
     setTasks([...tasks, { id: Date.now(), title, description, status: false }]);
@@ -26,12 +28,18 @@ function App() {
 
   return (
     <div className="App">
-      <TaskForm addTask={addTask} editingTask={editingTask} updateTask={updateTask} />
-      <div className="flex flex-col space-y-4 mt-4">
-        {tasks.map(task => 
-          <TaskItem key={task.id} task={task} deleteTask={deleteTask} toggleTask={toggleTask} setEditingTask={setEditingTask} />
-        )}
-      </div>
+      {token ? (
+        <>
+          <TaskForm addTask={addTask} editingTask={editingTask} updateTask={updateTask} />
+          <div className="flex flex-col space-y-4 mt-4">
+            {tasks.map(task =>
+              <TaskItem key={task.id} task={task} deleteTask={deleteTask} toggleTask={toggleTask} setEditingTask={setEditingTask} />
+            )}
+          </div>
+        </>
+      ) : (
+        <LoginForm setToken={setToken} />
+      )}
     </div>
   );
 }
