@@ -1,30 +1,12 @@
-# React + TypeScript + Vite
+# Bootcamp Fullstack Node API
+### Hola, soy Diego Becerra o **dDumst** 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![https://github.com/ddumst](https://user-images.githubusercontent.com/1307894/212375663-b2b2b89b-0530-4320-a254-928f1878ba86.png)
 
-Currently, two official plugins are available:
+Este es un repositorio para un Master que ando cursando a la fecha (22/03/2024), en donde debemos crear un pequeño TODO list usando los hooks basicos de React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
+Estoy usando TailwindCSS para los estilos, para generar el CSS se debe ejecutar en una consola aparte en el root del proyecto:
 
 ```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+npm run tailwind
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
